@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23040507'/><path d='M25 25 L75 75 M75 25 L25 75' stroke='%23D90429' stroke-width='14' stroke-linecap='round'/><circle cx='50' cy='50' r='12' fill='%23F4C95D'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#040507" />
+    
+    <title>SANJAYVERSE: The Birthday Protocol</title>
+    <meta name="description" content="An 8–12 minute cinematic interactive story experience celebrating B. Sanjay, Co-Founder of CodeXa Agency. Presented by Ashu. 12 September 2026." />
+    <meta property="og:title" content="SANJAYVERSE: The Birthday Protocol" />
+    <meta property="og:description" content="One person. Many roles. One unforgettable chapter. Happy Birthday, B. Sanjay!" />
+    <meta property="og:image" content="/assets/sanjay.jpg" />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Sans+Devanagari:wght@600;900&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="loading-state">
+    <!-- Background Canvas for dynamic dust, web lines & ambient FX -->
+    <canvas id="fx-canvas" class="fx-canvas" aria-hidden="true"></canvas>
+    
+    <!-- Global Birthday Decoration Layer (Butterflies, Balloons, Stars) -->
+    <canvas id="decorations-canvas" class="decorations-canvas" aria-hidden="true"></canvas>
+
+    <!-- Film Grain Overlay -->
+    <div class="film-grain" aria-hidden="true"></div>
+
+    <!-- Persistent Story HUD -->
+    <header id="story-hud" class="story-hud hidden">
+      <div class="hud-left">
+        <div class="codexa-brand" title="CodeXa Agency">
+          <span class="brand-x">X</span>
+          <span class="brand-title">SANJAYVERSE</span>
+        </div>
+        <div class="protocol-tag">PROTOCOL 0912-26</div>
+      </div>
+
+      <div class="hud-center">
+        <div class="chapter-info">
+          <span id="hud-chapter-label" class="hud-chapter-label">PHASE 00</span>
+          <span id="hud-chapter-title" class="hud-chapter-title">MIDNIGHT LOCK</span>
+        </div>
+        <div class="hud-progress-bar">
+          <div id="hud-progress-fill" class="hud-progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="hud-right">
+        <!-- Secret fragments count -->
+        <button id="btn-fragments" class="hud-icon-btn fragments-btn" title="Web Fragments Collected" aria-label="Web Fragments">
+          <span class="fragment-spider-icon">🕸️</span>
+          <span id="hud-fragment-count" class="fragment-count">0/6</span>
+        </button>
+
+        <!-- Badges drawer trigger -->
+        <button id="btn-badges" class="hud-icon-btn badges-btn" title="Achievements" aria-label="Achievements">
+          <span class="badge-star-icon">🏆</span>
+          <span id="hud-badge-count" class="badge-count">0/13</span>
+        </button>
+
+        <!-- Audio toggle -->
+        <button id="btn-audio" class="hud-icon-btn audio-btn" title="Toggle Audio" aria-label="Toggle Audio">
+          <span id="audio-icon" class="audio-icon">🔇</span>
+        </button>
+
+        <!-- Fullscreen toggle -->
+        <button id="btn-fullscreen" class="hud-icon-btn fullscreen-btn" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
+          ⛶
+        </button>
+
+        <!-- Settings toggle -->
+        <button id="btn-settings" class="hud-icon-btn settings-btn" title="Settings" aria-label="Settings">
+          ⚙️
+        </button>
+      </div>
+    </header>
+
+    <!-- Global Scene Host -->
+    <main id="app" class="app-container" role="main">
+      <!-- Loading Initializer -->
+      <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+          <div class="loading-codexa-logo">
+            <span class="loading-x">X</span>
+          </div>
+          <h1 class="loading-title">PREPARING THE SANJAYVERSE</h1>
+          <p id="loading-status-text" class="loading-subtext">Synchronizing Birthday Protocol...</p>
+          <div class="loading-bar">
+            <div id="loading-progress" class="loading-progress"></div>
+          </div>
+          <div class="loading-fallback-actions">
+            <button id="btn-force-start" class="btn-secondary hidden">Enter Experience</button>
+            <button id="btn-low-graphics" class="btn-ghost">Low Graphics Mode</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Phase Mount Point -->
+      <div id="scene-container" class="scene-container"></div>
+    </main>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Achievement Badges Drawer Modal -->
+    <div id="badges-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-card badges-card">
+        <div class="modal-header">
+          <h2>🏆 SanjayVerse Achievements</h2>
+          <button class="btn-close-modal" id="btn-close-badges" aria-label="Close Badges">✕</button>
+        </div>
+        <p class="modal-desc">Badges unlocked during the 8–12 minute birthday quest.</p>
+        <div id="badges-grid" class="badges-grid"></div>
+      </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-card settings-card">
+        <div class="modal-header">
+          <h2>⚙️ System Settings</h2>
+          <button class="btn-close-modal" id="btn-close-settings" aria-label="Close Settings">✕</button>
+        </div>
+        <div class="settings-options">
+          <div class="setting-row">
+            <div>
+              <div class="setting-title">Audio Synthesizer & Music</div>
+              <div class="setting-sub">Procedural Web Audio soundscape</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggle-sound">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <div>
+              <div class="setting-title">Reduce Motion</div>
+              <div class="setting-sub">Disable camera orbits, shakes & intense zooms</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggle-reduce-motion">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <div>
+              <div class="setting-title">Low Graphics Mode</div>
+              <div class="setting-sub">Optimized for low-end mobile devices & 2D fallback</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggle-low-graphics">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <div>
+              <div class="setting-title">New Game+ Chapter Selector</div>
+              <div class="setting-sub">Jump to any unlocked phase</div>
+            </div>
+            <button id="btn-open-chapter-select" class="btn-secondary">Open Chapter Select</button>
+          </div>
+          <div class="setting-row danger-zone">
+            <div>
+              <div class="setting-title">Reset Journey</div>
+              <div class="setting-sub">Clear saved progress and restart from Midnight</div>
+            </div>
+            <button id="btn-reset-journey" class="btn-danger">Restart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter Select Modal (New Game+) -->
+    <div id="chapters-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-card chapters-card">
+        <div class="modal-header">
+          <h2>🌌 SanjayVerse Chapters (New Game+)</h2>
+          <button class="btn-close-modal" id="btn-close-chapters" aria-label="Close Chapter Select">✕</button>
+        </div>
+        <div id="chapters-grid" class="chapters-grid"></div>
+      </div>
+    </div>
+
+    <!-- Secret Hacker Terminal Modal -->
+    <div id="terminal-modal" class="terminal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="terminal-window">
+        <div class="terminal-bar">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="terminal-title">codexa-kernel@sanjayverse:~ (CLASSIFIED)</div>
+          <button id="btn-close-terminal" class="terminal-close">✕</button>
+        </div>
+        <div id="terminal-body" class="terminal-body">
+          <div class="terminal-log" id="terminal-log">
+Welcome to CODEXA KERNEL v9.12.26
+Type 'help' to view available classified commands.
+          </div>
+          <form id="terminal-form" class="terminal-input-row">
+            <span class="terminal-prompt">&gt;</span>
+            <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" placeholder="type a command..." />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

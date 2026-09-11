@@ -1,0 +1,1040 @@
+/* ==========================================================================
+   SANJAYVERSE DESIGN SYSTEM: Phase-Specific Scenes & Game Layouts
+   ========================================================================== */
+
+.phase-scene {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 80px 24px 32px 24px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Phase 0: Midnight Lock
+   -------------------------------------------------------------------------- */
+.midnight-scene {
+  text-align: center;
+  max-width: 860px;
+}
+
+.midnight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(217, 4, 41, 0.15);
+  border: 1px solid var(--accent-red);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-red-bright);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.midnight-title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  background: linear-gradient(180deg, #fff 0%, #a5abb6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.midnight-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.countdown-clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 24px);
+  margin: 32px 0;
+}
+
+.clock-segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clock-card {
+  background: #0d1017;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: clamp(14px, 3vw, 24px) clamp(16px, 3.5vw, 32px);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.05), var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.clock-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.clock-digits {
+  font-family: var(--font-mono);
+  font-size: clamp(36px, 7vw, 68px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.clock-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+.clock-divider {
+  font-family: var(--font-mono);
+  font-size: clamp(28px, 5vw, 44px);
+  color: var(--accent-red);
+  margin-top: -24px;
+  animation: pulse 1s infinite alternate;
+}
+
+.midnight-characters-bar {
+  margin: 24px 0 32px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.midnight-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   Phase 1: Cinematic Time Portal
+   -------------------------------------------------------------------------- */
+.portal-scene {
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+}
+
+.portal-center {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+}
+
+.portal-wheel-container {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.portal-wheel-outer {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--accent-red);
+  border-bottom-color: var(--accent-blue);
+  animation: spinSlow 8s linear infinite;
+}
+
+.portal-devanagari-year {
+  font-family: var(--font-devanagari);
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--accent-gold);
+  text-shadow: 0 0 24px var(--accent-gold-glow);
+}
+
+.portal-final-date {
+  font-family: var(--font-devanagari);
+  font-size: clamp(40px, 8vw, 76px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 50%, var(--accent-red-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 40px rgba(244, 201, 93, 0.4);
+  transform: scale(0.9);
+  animation: scaleUp 1.2s forwards cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.portal-web-crack-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-radial-gradient: circle;
+}
+
+/* --------------------------------------------------------------------------
+   Phase 2: Identity Verification Room
+   -------------------------------------------------------------------------- */
+.identity-scene {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 280px 1fr 280px;
+  gap: 24px;
+  align-items: center;
+}
+
+.character-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(17, 20, 27, 0.5);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.character-avatar-wrap {
+  width: 160px;
+  height: 160px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.character-badge-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+
+.character-bubble {
+  background: rgba(4, 5, 7, 0.9);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.verification-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 4vw, 40px);
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.verification-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+}
+
+.v-panel-title {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.v-panel-sub {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.password-input-wrap {
+  position: relative;
+  max-width: 360px;
+  margin: 0 auto 20px auto;
+}
+
+.password-field {
+  width: 100%;
+  height: 56px;
+  background: #080b10;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 0 54px 0 20px;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 4px;
+  outline: none;
+  transition: all var(--trans-fast);
+  text-align: center;
+}
+
+.password-field:focus {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 20px var(--accent-red-glow);
+}
+
+.password-field.error {
+  border-color: var(--status-danger);
+  animation: shake 0.4s ease-in-out;
+}
+
+.password-field.success {
+  border-color: var(--status-success);
+  box-shadow: 0 0 24px rgba(56, 217, 150, 0.4);
+}
+
+.btn-toggle-pw {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  letter-spacing: 0.5px;
+  transition: all var(--trans-fast);
+  user-select: none;
+}
+
+.btn-toggle-pw:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.wrong-pw-feedback {
+  min-height: 24px;
+  font-size: 13px;
+  color: var(--accent-red-bright);
+  margin-bottom: 20px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.v-panel-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.shake-panel-anim {
+  animation: shake 0.45s ease-in-out;
+}
+
+.hint-pulse {
+  animation: hintPulse 1.2s infinite alternate !important;
+  border-color: var(--accent-gold) !important;
+  box-shadow: 0 0 20px var(--accent-gold-glow) !important;
+  color: var(--accent-gold) !important;
+}
+
+@keyframes hintPulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(244, 201, 93, 0.4); }
+  100% { transform: scale(1.04); box-shadow: 0 0 25px rgba(244, 201, 93, 0.85); }
+}
+
+/* --------------------------------------------------------------------------
+   Phase 3: Hint Quest (Mini-Games Shell)
+   -------------------------------------------------------------------------- */
+.hint-quest-scene {
+  width: 100%;
+  max-width: 760px;
+  text-align: center;
+}
+
+.hint-inventory-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+}
+
+.fragment-slot {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.fragment-slot.collected {
+  background: rgba(244, 201, 93, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+  box-shadow: 0 0 12px var(--accent-gold-glow);
+}
+
+.game-shell {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Simon Says Glowing Grid */
+.simon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  max-width: 320px;
+  margin: 24px auto;
+}
+
+.simon-tile {
+  aspect-ratio: 1;
+  background: #141822;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 120ms ease;
+}
+
+.simon-tile:active, .simon-tile.active {
+  transform: scale(0.94);
+}
+
+.simon-tile[data-color="1"].active { background: #d90429; box-shadow: 0 0 24px #d90429; }
+.simon-tile[data-color="2"].active { background: #247bff; box-shadow: 0 0 24px #247bff; }
+.simon-tile[data-color="3"].active { background: #f4c95d; box-shadow: 0 0 24px #f4c95d; }
+.simon-tile[data-color="4"].active { background: #38d996; box-shadow: 0 0 24px #38d996; }
+.simon-tile[data-color="5"].active { background: #a55eea; box-shadow: 0 0 24px #a55eea; }
+.simon-tile[data-color="6"].active { background: #fd9644; box-shadow: 0 0 24px #fd9644; }
+.simon-tile[data-color="7"].active { background: #2bcbba; box-shadow: 0 0 24px #2bcbba; }
+.simon-tile[data-color="8"].active { background: #fc5c65; box-shadow: 0 0 24px #fc5c65; }
+.simon-tile[data-color="9"].active { background: #4b7bec; box-shadow: 0 0 24px #4b7bec; }
+
+/* Coffee Catch Stage */
+.coffee-canvas {
+  width: 100%;
+  max-width: 500px;
+  height: 280px;
+  background: #080b11;
+  border-radius: var(--radius-md);
+  margin: 0 auto;
+  border: 1px solid var(--border-subtle);
+  touch-action: none;
+}
+
+/* Spider Web Decoder Graph */
+.web-graph-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 260px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Phase 4: Biometric Scan Confirmation
+   -------------------------------------------------------------------------- */
+.confirm-scene {
+  text-align: center;
+  max-width: 640px;
+}
+
+.scan-radar-wrap {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 24px auto;
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid var(--accent-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px var(--accent-red-glow);
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-red-bright);
+  box-shadow: 0 0 10px var(--accent-red-bright);
+  animation: scanLineMove 2s infinite ease-in-out;
+}
+
+.scan-traits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 24px 0;
+  text-align: left;
+}
+
+.scan-trait-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+}
+
+.scan-trait-status {
+  color: var(--status-success);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   Phase 5: World Hub & Sanjay Player Card
+   -------------------------------------------------------------------------- */
+.hub-scene {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.player-card-container {
+  width: 100%;
+  max-width: 800px;
+  background: linear-gradient(135deg, rgba(17, 20, 27, 0.95) 0%, rgba(11, 13, 18, 0.95) 100%);
+  border: 1px solid rgba(217, 4, 41, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 0 40px var(--accent-red-glow);
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.player-photo-wrap {
+  width: 220px;
+  height: 280px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid var(--accent-red);
+  box-shadow: 0 0 20px var(--accent-red-glow);
+  position: relative;
+}
+
+.player-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.player-header-badge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-gold);
+  letter-spacing: 2px;
+}
+
+.player-name {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.player-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.meta-box {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.meta-box-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.meta-box-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 2px;
+}
+
+.zones-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+  padding-bottom: 8px;
+}
+
+.zone-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.zone-chip:hover {
+  background: rgba(217, 4, 41, 0.2);
+  border-color: var(--accent-red);
+}
+
+/* --------------------------------------------------------------------------
+   Phase 8: 3D Celebration Cake Room
+   -------------------------------------------------------------------------- */
+.cake-scene {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cake-canvas-container {
+  width: 100%;
+  max-width: 720px;
+  height: 440px;
+  position: relative;
+  cursor: grab;
+}
+
+.cake-canvas-container:active {
+  cursor: grabbing;
+}
+
+.cake-hud-controls {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 50;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.first-piece-modal {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 5, 7, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.first-piece-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  text-align: center;
+  max-width: 480px;
+  box-shadow: var(--shadow-lg);
+}
+
+.first-piece-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+  position: relative;
+  min-height: 56px;
+}
+
+/* Runaway "No" button */
+#btn-cake-no {
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+/* --------------------------------------------------------------------------
+   Phase 10: Emotional Letter
+   -------------------------------------------------------------------------- */
+.letter-scene {
+  width: 100%;
+  max-width: 780px;
+  text-align: center;
+}
+
+.envelope-wrap {
+  width: 280px;
+  height: 190px;
+  background: #0f1219;
+  border: 2px solid #232a38;
+  border-radius: var(--radius-md);
+  margin: 32px auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--trans-base);
+}
+
+.envelope-wrap:hover {
+  transform: translateY(-4px);
+}
+
+.wax-seal {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f4c95d 0%, #b8860b 100%);
+  box-shadow: 0 0 20px rgba(244, 201, 93, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-cinematic);
+  font-size: 28px;
+  font-weight: 900;
+  color: #040507;
+}
+
+.letter-sheet {
+  background: #0d1017;
+  border: 1px solid rgba(244, 201, 93, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  text-align: left;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  max-height: 70vh;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.letter-paragraph {
+  margin-bottom: 20px;
+  line-height: 1.8;
+  color: #e2e8f0;
+  font-size: 16px;
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+}
+
+.letter-signature-block {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   Phase 11: Founder's Promise Vault
+   -------------------------------------------------------------------------- */
+.vault-scene {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+.promises-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+  text-align: left;
+}
+
+.promise-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: all var(--trans-fast);
+}
+
+.promise-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+
+.promise-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.promise-status {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.status-active { background: rgba(56, 217, 150, 0.15); color: var(--status-success); }
+.status-ready { background: rgba(244, 201, 93, 0.15); color: var(--accent-gold); }
+.status-pending { background: rgba(36, 123, 255, 0.15); color: var(--accent-blue-bright); }
+
+/* --------------------------------------------------------------------------
+   Phase 15: Roast Royale Quiz
+   -------------------------------------------------------------------------- */
+.quiz-scene {
+  width: 100%;
+  max-width: 720px;
+  text-align: center;
+}
+
+.quiz-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+}
+
+.quiz-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 28px 0;
+}
+
+.quiz-option-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+  text-align: center;
+}
+
+.quiz-option-btn:hover {
+  background: rgba(217, 4, 41, 0.15);
+  border-color: var(--accent-red);
+}
+
+.quiz-option-btn.selected-correct {
+  background: rgba(56, 217, 150, 0.2);
+  border-color: var(--status-success);
+}
+
+/* --------------------------------------------------------------------------
+   Phase 17: Downloadable Birthday Card
+   -------------------------------------------------------------------------- */
+.card-scene {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.card-canvas-preview {
+  max-width: 100%;
+  max-height: 520px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+  border: 1px solid var(--border-subtle);
+  margin: 20px 0;
+}
+
+.card-actions-bar {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   Phase 14: Cancellation & Acceptance Seals
+   -------------------------------------------------------------------------- */
+@keyframes stamp-slam {
+  0% {
+    opacity: 0;
+    transform: scale(2.5) rotate(-22deg);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(0.92) rotate(-11deg);
+  }
+  100% {
+    opacity: 0.95;
+    transform: scale(1) rotate(-13deg);
+  }
+}
+
+@keyframes seal-land {
+  0% {
+    opacity: 0;
+    transform: scale(2.2) rotate(25deg);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(0.94) rotate(4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes shake-card {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-7px); }
+  40%, 80% { transform: translateX(7px); }
+}
+
+.rejection-stamp {
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  border: 3px solid #ff4757;
+  color: #ff4757;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  background: rgba(255, 71, 87, 0.15);
+  box-shadow: 0 0 20px rgba(255, 71, 87, 0.4);
+  pointer-events: none;
+  animation: stamp-slam 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  z-index: 10;
+}
+
+.accepted-seal {
+  position: absolute;
+  top: 30%;
+  right: 12%;
+  border: 2px dashed var(--accent-gold);
+  color: var(--accent-gold);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 10px 14px;
+  border-radius: 50%;
+  background: rgba(244, 201, 93, 0.18);
+  box-shadow: 0 0 25px var(--accent-gold-glow);
+  pointer-events: none;
+  animation: seal-land 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  z-index: 10;
+}
+
+.shake-card-anim {
+  animation: shake-card 0.45s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Responsiveness for Phases
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .identity-scene {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .character-stage {
+    display: none; /* Keep verification unobstructed on smaller phones */
+  }
+
+  .player-card-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .player-photo-wrap {
+    margin: 0 auto;
+  }
+
+  .quiz-options-grid {
+    grid-template-columns: 1fr;
+  }
+}
