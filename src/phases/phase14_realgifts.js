@@ -131,8 +131,6 @@ export function renderPhase14(container, onNext) {
             <p style="color: var(--text-muted); font-size: 13px;">Review and claim all three loot items above to proceed!</p>
           `}
         </div>
-
-        <button id="btn-skip-real" class="btn-skip">Skip Gift Claim →</button>
       </div>
 
       <!-- Nice Try Modal Dialog -->
@@ -179,7 +177,6 @@ export function renderPhase14(container, onNext) {
     const btnFood = container.querySelector('#btn-claim-food');
     const btnIrritation = container.querySelector('#btn-claim-irritation');
     const btnGotoRoast = container.querySelector('#btn-goto-roast');
-    const btnSkip = container.querySelector('#btn-skip-real');
     const modal = container.querySelector('#cancellation-modal');
     const irritationCard = container.querySelector('#irritation-card');
 
@@ -264,11 +261,6 @@ export function renderPhase14(container, onNext) {
         onNext();
       });
     }
-
-    btnSkip.addEventListener('click', () => {
-      audio.playSuccess();
-      onNext();
-    });
   };
 
   renderView();

@@ -73,8 +73,6 @@ export function renderPhase4(container, onNext) {
               <span class="scan-trait-status" id="s-irritation">SEARCHING...</span>
             </div>
           </div>
-
-          <button id="btn-skip-scan" class="btn-skip">Skip Biometrics →</button>
         </div>
       `;
 
@@ -91,8 +89,6 @@ export function renderPhase4(container, onNext) {
         step = 'confirmed';
         renderView();
       };
-
-      container.querySelector('#btn-skip-scan').addEventListener('click', finishScan);
 
       traits.forEach((t, i) => {
         timeouts.push(setTimeout(() => {

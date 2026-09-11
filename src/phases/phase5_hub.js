@@ -87,13 +87,10 @@ export function renderPhase5(container, onNext) {
           <span>→</span>
         </button>
       </div>
-
-      <button id="btn-skip-hub" class="btn-skip">Skip Hub →</button>
     </div>
   `;
 
   const btnStart = container.querySelector('#btn-start-story');
-  const btnSkip = container.querySelector('#btn-skip-hub');
 
   const proceed = () => {
     audio.playClick();
@@ -101,7 +98,6 @@ export function renderPhase5(container, onNext) {
   };
 
   btnStart.addEventListener('click', proceed);
-  btnSkip.addEventListener('click', proceed);
 
   return () => {};
 }

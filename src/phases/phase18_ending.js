@@ -72,14 +72,11 @@ export function renderPhase18(container, onNext) {
             </div>
           `}
         </div>
-
-        <button id="btn-skip-ending" class="btn-skip">Skip to Credits →</button>
       </div>
     `;
 
     const btnAccept = container.querySelector('#btn-accept-mission');
     const btnCredits = container.querySelector('#btn-goto-credits');
-    const btnSkip = container.querySelector('#btn-skip-ending');
 
     if (btnAccept) {
       btnAccept.addEventListener('click', () => {
@@ -97,11 +94,6 @@ export function renderPhase18(container, onNext) {
         onNext();
       });
     }
-
-    btnSkip.addEventListener('click', () => {
-      audio.playSuccess();
-      onNext();
-    });
   };
 
   renderView();

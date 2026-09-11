@@ -96,13 +96,6 @@ export function renderPhase7(container, onNext) {
             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px;">
               ${mem.caption}
             </p>
-
-            ${!mem.isClassified || isClassifiedUnlocked ? `
-              <button id="btn-gallery-audio" class="btn-secondary" style="font-size: 12px; min-height: 38px; padding: 0 16px;">
-                <span>🎙️</span>
-                <span id="audio-memo-label">Listen to Memory Audio Note</span>
-              </button>
-            ` : ''}
           </div>
         </div>
 
@@ -128,29 +121,12 @@ export function renderPhase7(container, onNext) {
             <span>🎂</span>
           </button>
         </div>
-
-        <button id="btn-skip-gallery" class="btn-skip">Skip Gallery →</button>
       </div>
     `;
 
     const btnPrev = container.querySelector('#btn-prev-mem');
     const btnNext = container.querySelector('#btn-next-mem');
     const btnEnterCake = container.querySelector('#btn-enter-cake');
-    const btnSkip = container.querySelector('#btn-skip-gallery');
-    const btnAudio = container.querySelector('#btn-gallery-audio');
-
-    if (btnAudio) {
-      btnAudio.addEventListener('click', () => {
-        audio.duckAudio(0.15);
-        audio.playSpiderChime();
-        const label = container.querySelector('#audio-memo-label');
-        if (label) label.textContent = 'Playing Memory Audio...';
-        setTimeout(() => {
-          audio.unduckAudio();
-          if (label) label.textContent = 'Replay Memory Audio';
-        }, 2200);
-      });
-    }
 
     btnPrev.addEventListener('click', () => {
       audio.playClick();
@@ -166,11 +142,6 @@ export function renderPhase7(container, onNext) {
 
     btnEnterCake.addEventListener('click', () => {
       audio.playClick();
-      onNext();
-    });
-
-    btnSkip.addEventListener('click', () => {
-      audio.playSuccess();
       onNext();
     });
   };

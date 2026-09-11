@@ -18,34 +18,29 @@ export function renderPhase1(container, onNext) {
           CALIBRATING TEMPORAL PROTOCOL...
         </div>
       </div>
-
-      <button id="btn-skip-portal" class="btn-skip">Skip Portal →</button>
     </div>
   `;
 
   const displayEl = container.querySelector('#devanagari-display');
   const statusEl = container.querySelector('#portal-status');
   const wheelEl = container.querySelector('#portal-wheel');
-  const btnSkip = container.querySelector('#btn-skip-portal');
 
   let timeouts = [];
   const years = ['२०१८', '२०१९', '२०२०', '२०२१', '२०२२', '२०२३', '२०२४', '२०२५', '२०२६'];
   const months = ['जनवरी', 'मार्च', 'मई', 'जुलाई', 'सितम्बर'];
 
-  const skipOrEnd = () => {
+  const finishPortal = () => {
     timeouts.forEach(t => clearTimeout(t));
     audio.playSuccess();
     canvasFx.burstCelebration();
     onNext();
   };
 
-  btnSkip.addEventListener('click', skipOrEnd);
-
   // If user has reduceMotion enabled, fast forward directly
   if (state.state.reduceMotion) {
     displayEl.innerHTML = `<span class="portal-final-date">१२ सितम्बर २०२६</span>`;
     statusEl.textContent = 'PROTOCOL UNLOCKED';
-    setTimeout(skipOrEnd, 1200);
+    setTimeout(finishPortal, 1200);
     return () => timeouts.forEach(t => clearTimeout(t));
   }
 
@@ -92,7 +87,7 @@ export function renderPhase1(container, onNext) {
     // Trigger canvas web crack
     canvasFx.drawWebCrack(window.innerWidth / 2, window.innerHeight / 2, () => {
       canvasFx.burstCelebration();
-      timeouts.push(setTimeout(skipOrEnd, 1400));
+      timeouts.push(setTimeout(finishPortal, 1400));
     });
   }, 5600));
 

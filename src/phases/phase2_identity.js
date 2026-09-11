@@ -111,8 +111,6 @@ export function renderPhase2(container, onNext, onNeedHint) {
           "Privacy mode active. We aren't peeking."
         </div>
       </div>
-
-      <button id="btn-skip-identity" class="btn-skip">Skip Identity Check →</button>
     </div>
   `;
 
@@ -126,7 +124,6 @@ export function renderPhase2(container, onNext, onNeedHint) {
   const btnSubmit = container.querySelector('#btn-verify-submit');
   const btnSubmitText = container.querySelector('#btn-submit-text');
   const btnHint = container.querySelector('#btn-need-hint');
-  const btnSkip = container.querySelector('#btn-skip-identity');
   const badgeLockIcon = container.querySelector('#badge-lock-icon');
 
   const hackerAvatar = container.querySelector('#hacker-avatar');
@@ -294,11 +291,6 @@ export function renderPhase2(container, onNext, onNeedHint) {
   btnHint.addEventListener('click', () => {
     audio.playClick();
     onNeedHint();
-  });
-
-  btnSkip.addEventListener('click', () => {
-    audio.playSuccess();
-    onNext();
   });
 
   return () => {

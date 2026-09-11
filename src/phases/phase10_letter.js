@@ -35,8 +35,6 @@ export function renderPhase10(container, onNext) {
               <span>✨</span>
             </button>
           </div>
-
-          <button id="btn-skip-letter" class="btn-skip">Skip Letter →</button>
         </div>
       `;
 
@@ -49,9 +47,6 @@ export function renderPhase10(container, onNext) {
 
       container.querySelector('#envelope-trigger').addEventListener('click', openIt);
       container.querySelector('#btn-open-letter').addEventListener('click', openIt);
-      container.querySelector('#btn-skip-letter').addEventListener('click', () => {
-        onNext();
-      });
     } else {
       container.innerHTML = `
         <div class="phase-scene letter-scene fade-in">

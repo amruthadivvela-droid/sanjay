@@ -45,22 +45,14 @@ export function renderPhase16(container, onNext) {
           <span>🎨</span>
         </button>
       </div>
-
-      <button id="btn-skip-badges" class="btn-skip">Skip Badges →</button>
     </div>
   `;
 
   const btnGoto = container.querySelector('#btn-goto-card-gen');
-  const btnSkip = container.querySelector('#btn-skip-badges');
 
   btnGoto.addEventListener('click', () => {
     audio.playSuccess();
     canvasFx.burstCelebration();
-    onNext();
-  });
-
-  btnSkip.addEventListener('click', () => {
-    audio.playSuccess();
     onNext();
   });
 

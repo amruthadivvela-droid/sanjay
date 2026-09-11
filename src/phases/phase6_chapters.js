@@ -18,15 +18,8 @@ export function renderPhase6(container, onComplete) {
         </div>
 
         <div id="subchapter-mount"></div>
-
-        <button id="btn-skip-chapters" class="btn-skip">Skip Chapters →</button>
       </div>
     `;
-
-    container.querySelector('#btn-skip-chapters').addEventListener('click', () => {
-      audio.playSuccess();
-      onComplete();
-    });
 
     const mount = container.querySelector('#subchapter-mount');
 

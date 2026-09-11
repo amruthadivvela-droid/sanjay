@@ -64,15 +64,12 @@ export function renderPhase9(container, onNext) {
             </button>
           `}
         </div>
-
-        <button id="btn-skip-wishes" class="btn-skip">Skip Wishes →</button>
       </div>
     `;
 
     const btnNext = container.querySelector('#btn-next-wish');
     const btnPrev = container.querySelector('#btn-prev-wish');
     const btnFinish = container.querySelector('#btn-finish-wishes');
-    const btnSkip = container.querySelector('#btn-skip-wishes');
 
     if (btnNext) {
       btnNext.addEventListener('click', () => {
@@ -96,11 +93,6 @@ export function renderPhase9(container, onNext) {
         onNext();
       });
     }
-
-    btnSkip.addEventListener('click', () => {
-      audio.playSuccess();
-      onNext();
-    });
   };
 
   renderCard();

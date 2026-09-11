@@ -93,14 +93,11 @@ export function renderPhase11(container, onNext) {
             </div>
           `}
         </div>
-
-        <button id="btn-skip-vault" class="btn-skip">Skip Vault →</button>
       </div>
     `;
 
     const btnAccept = container.querySelector('#btn-accept-pact');
     const btnGoto = container.querySelector('#btn-goto-gifts');
-    const btnSkip = container.querySelector('#btn-skip-vault');
 
     if (btnAccept) {
       btnAccept.addEventListener('click', () => {
@@ -119,11 +116,6 @@ export function renderPhase11(container, onNext) {
         onNext();
       });
     }
-
-    btnSkip.addEventListener('click', () => {
-      audio.playSuccess();
-      onNext();
-    });
   };
 
   renderView();

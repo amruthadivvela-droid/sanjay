@@ -72,8 +72,6 @@ export function renderPhase15(container, onNext) {
               <span>Full Fire Mode</span>
             </button>
           </div>
-
-          <button id="btn-skip-quiz" class="btn-skip">Skip Quiz →</button>
         </div>
       `;
 
@@ -89,12 +87,6 @@ export function renderPhase15(container, onNext) {
         isModeChosen = true;
         audio.playClick();
         renderView();
-      });
-
-      container.querySelector('#btn-skip-quiz').addEventListener('click', () => {
-        state.unlockBadge('b_roast');
-        audio.playSuccess();
-        onNext();
       });
     } else if (currentQIdx < questions.length) {
       const q = questions[currentQIdx];

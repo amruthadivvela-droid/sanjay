@@ -24,15 +24,8 @@ export function renderPhase12(container, onComplete) {
         </div>
 
         <div id="gift-game-mount"></div>
-
-        <button id="btn-skip-all-games" class="btn-skip">Skip Gift Games →</button>
       </div>
     `;
-
-    container.querySelector('#btn-skip-all-games').addEventListener('click', () => {
-      audio.playSuccess();
-      onComplete();
-    });
 
     const mount = container.querySelector('#gift-game-mount');
 

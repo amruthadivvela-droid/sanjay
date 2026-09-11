@@ -66,14 +66,11 @@ export function renderPhase13(container, onNext) {
             </button>
           `}
         </div>
-
-        <button id="btn-skip-fakes" class="btn-skip">Skip Fake Gifts →</button>
       </div>
     `;
 
     const btnNext = container.querySelector('#btn-next-fake');
     const btnFinish = container.querySelector('#btn-finish-fake');
-    const btnSkip = container.querySelector('#btn-skip-fakes');
 
     if (btnNext) {
       btnNext.addEventListener('click', () => {
@@ -90,11 +87,6 @@ export function renderPhase13(container, onNext) {
         onNext();
       });
     }
-
-    btnSkip.addEventListener('click', () => {
-      audio.playSuccess();
-      onNext();
-    });
   };
 
   renderCard();

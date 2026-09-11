@@ -66,14 +66,16 @@ export function renderPhase0(container, onNext) {
         Hacker and animal crew are resting until September 12, 12:00 AM IST.
       </p>
 
-      <div class="midnight-actions" style="justify-content: center;">
-        <button id="btn-midnight-sound" class="btn-primary" style="padding: 0 32px;">
+      <div class="midnight-actions">
+        <button id="btn-midnight-unlock" class="btn-primary" style="padding: 0 36px;">
+          <span>Enter Protocol</span>
+          <span>→</span>
+        </button>
+        <button id="btn-midnight-sound" class="btn-secondary" style="padding: 0 24px;">
           <span id="midnight-sound-icon">🔊</span>
-          <span id="midnight-sound-label">Enable Audio Experience</span>
+          <span id="midnight-sound-label">Audio Experience</span>
         </button>
       </div>
-
-      <button id="btn-skip-midnight" class="btn-skip">Skip Countdown →</button>
     </div>
   `;
 
@@ -81,8 +83,8 @@ export function renderPhase0(container, onNext) {
   const hoursEl = container.querySelector('#cd-hours');
   const minutesEl = container.querySelector('#cd-minutes');
   const secondsEl = container.querySelector('#cd-seconds');
+  const btnUnlock = container.querySelector('#btn-midnight-unlock');
   const btnSound = container.querySelector('#btn-midnight-sound');
-  const btnSkip = container.querySelector('#btn-skip-midnight');
 
   let timerInterval = null;
 
@@ -129,7 +131,7 @@ export function renderPhase0(container, onNext) {
     onNext();
   };
 
-  btnSkip.addEventListener('click', proceedToPortal);
+  btnUnlock.addEventListener('click', proceedToPortal);
 
   return () => {
     clearInterval(timerInterval);

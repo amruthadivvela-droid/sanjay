@@ -59,8 +59,6 @@ export function renderPhase8(container, onNext) {
           </div>
         </div>
       </div>
-
-      <button id="btn-skip-cake" class="btn-skip">Skip Cake Room →</button>
     </div>
   `;
 
@@ -72,7 +70,6 @@ export function renderPhase8(container, onNext) {
   const btnYes = container.querySelector('#btn-cake-yes');
   const btnNo = container.querySelector('#btn-cake-no');
   const quoteEl = container.querySelector('#first-piece-quote');
-  const btnSkip = container.querySelector('#btn-skip-cake');
 
   // ------------------------------------------------------------------------
   // Three.js 3D Cake Scene Setup
@@ -277,10 +274,6 @@ export function renderPhase8(container, onNext) {
   };
 
   btnYes.addEventListener('click', finishCake);
-  btnSkip.addEventListener('click', () => {
-    audio.playSuccess();
-    onNext();
-  });
 
   return () => {
     if (animId) cancelAnimationFrame(animId);

@@ -44,7 +44,6 @@ export function renderPhase3(container, onComplete, onReturnToPassword) {
 
         <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
           <button id="btn-return-pw" class="btn-ghost">← Return to Passcode Entry</button>
-          <button id="btn-skip-hints" class="btn-skip">Skip Hint Quest →</button>
         </div>
       </div>
     `;
@@ -52,14 +51,6 @@ export function renderPhase3(container, onComplete, onReturnToPassword) {
     container.querySelector('#btn-return-pw').addEventListener('click', () => {
       audio.playClick();
       onReturnToPassword();
-    });
-
-    container.querySelector('#btn-skip-hints').addEventListener('click', () => {
-      state.setPasswordFragment('f01', true);
-      state.setPasswordFragment('f02', true);
-      state.setPasswordFragment('f03', true);
-      audio.playSuccess();
-      onComplete();
     });
 
     const mount = container.querySelector('#game-mount-point');

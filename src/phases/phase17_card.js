@@ -51,8 +51,6 @@ export function renderPhase17(container, onNext) {
           <span>→</span>
         </button>
       </div>
-
-      <button id="btn-skip-card" class="btn-skip">Skip Card →</button>
     </div>
   `;
 
@@ -62,7 +60,6 @@ export function renderPhase17(container, onNext) {
   const btnDownload = container.querySelector('#btn-download-png');
   const btnCopy = container.querySelector('#btn-copy-link');
   const btnGotoEnding = container.querySelector('#btn-goto-ending');
-  const btnSkip = container.querySelector('#btn-skip-card');
 
   const photoImg = new Image();
   photoImg.crossOrigin = 'anonymous';
@@ -241,11 +238,6 @@ export function renderPhase17(container, onNext) {
   btnGotoEnding.addEventListener('click', () => {
     audio.playSuccess();
     canvasFx.burstCelebration();
-    onNext();
-  });
-
-  btnSkip.addEventListener('click', () => {
-    audio.playSuccess();
     onNext();
   });
 
